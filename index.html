@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prakriti Discovery – Ayurvedic Career Guidance</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="script.css">
+</head>
+<body>
+
+<div class="ambient a1"></div>
+<div class="ambient a2"></div>
+<div class="ambient a3"></div>
+
+<!-- ── PROGRESS BAR ── -->
+<div class="prog-wrap" id="progBar">
+  <div class="prog-inner">
+    <div class="prog-label"><span>Prakriti Assessment Progress</span><b id="progTxt">0 / 30</b></div>
+    <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
+  </div>
+</div>
+
+<div class="wrapper">
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="hero" id="s-hero">
+  <h1>Ayurvedic Career Guidance<br><em>System</em></h1>
+  <p>Answer questions to reveal your dominant Dosha (Prakriti) and Triguna (Guna), then receive personalised career recommendations powered by AI and Ayurvedic wisdom.</p>
+  <div class="dosha-pills">
+    <span class="pill pill-v">Vata</span>
+    <span class="pill pill-p">Pitta</span>
+    <span class="pill pill-k">Kapha</span>
+    <span class="pill pill-v">Sattva</span>
+    <span class="pill pill-p">Rajas</span>
+    <span class="pill pill-k">Tamas</span>
+  </div>
+  <button class="gold-btn" onclick="goProfile()">Begin Assessment <span class="arr">→</span></button>
+</section>
+
+<!-- ═══════════════════════ PROFILE ═══════════════════════ -->
+<section class="sect" id="s-profile">
+  <div class="profile-card">
+    <div class="profile-head">
+      <h2>Tell Us About <em>Yourself</em></h2>
+    </div>
+    <div class="form-grid">
+      <div class="field" id="f-name">
+        <label class="flabel" for="i-name">Full Name</label>
+        <input class="finput" id="i-name" type="text" placeholder="e.g. XYZ" oninput="chkProfile()">
+        <span class="ferr">Please enter your name</span>
+      </div>
+      <div class="field" id="f-age">
+        <label class="flabel" for="i-age">Age</label>
+        <input class="finput" id="i-age" type="number" placeholder="e.g. 21" min="10" max="80" oninput="chkProfile()">
+        <span class="ferr">Enter a valid age (10–80)</span>
+      </div>
+      <div class="field full" id="f-email">
+        <label class="flabel" for="i-email">Email Address</label>
+        <input class="finput" id="i-email" type="email" placeholder="e.g. xyz@email.com" oninput="chkProfile()">
+        <span class="ferr">Enter a valid email address</span>
+      </div>
+      <div class="field full" id="f-edu">
+        <label class="flabel" for="i-edu">Education Level</label>
+        <select class="finput" id="i-edu" onchange="chkProfile()">
+          <option value="" disabled selected>Select your education level</option>
+          <option>High School (10th)</option>
+          <option>Senior Secondary (12th)</option>
+          <option>Undergraduate (B.Tech / B.Sc / BA / BCA)</option>
+          <option>Postgraduate (M.Tech / M.Sc / MBA / MCA)</option>
+          <option>Doctoral (Ph.D)</option>
+          <option>Diploma / Vocational</option>
+          <option>Working Professional</option>
+        </select>
+        <span class="ferr">Please select your education level</span>
+      </div>
+      <div class="field full">
+        <label class="flabel">Hobbies &amp; Interests <span style="color:var(--muted);font-size:10px;text-transform:none;letter-spacing:0"></span></label>
+        <div class="hobby-grid" id="hobbyGrid">
+          <input class ="hchip" type="text" placeholder="Write here">
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-top:32px">
+      <button class="gold-btn" id="profileBtn" onclick="goGunaQuiz()" disabled style="width:100%;justify-content:center">
+        Discover Your Guna First <span class="arr">→</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ GUNA QUIZ ═══════════════════════ -->
+<section class="sect" id="s-guna-quiz">
+
+  <div class="guna-predict-card">
+    <div class="guna-predict-head">
+      <h2>Discover Your <em>Triguna</em></h2>
+      <p>Answer questions about your mental tendencies, habits and worldview.</p>
+    </div>
+
+    <!-- Guna progress bar -->
+    <div style="margin-bottom:32px">
+      <div class="prog-label"><span>Guna Assessment</span><b id="gunaProgTxt">0 / 10</b></div>
+      <div class="prog-bar"><div class="prog-fill" id="gunaProgFill" style="width:0%"></div></div>
+    </div>
+
+    <!-- Dynamically rendered Guna questions -->
+    <div id="gunaQuizContainer"></div>
+
+    <!-- Predict button -->
+    <div class="sub-wrap">
+      <button class="sub-btn" id="predictGunaBtn" onclick="predictGuna()">Predict My Guna ✦</button>
+      <p class="sub-note">Answer all 10 questions to predict your Guna</p>
+    </div>
+
+    <!-- Guna prediction result banner -->
+    <div class="guna-result-banner" id="gunaPredictResult">
+      <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Your Predicted Triguna</div>
+      <div class="guna-result-name" id="gunaPredictName">—</div>
+      <p class="guna-result-desc" id="gunaPredictDesc"></p>
+      <div class="guna-proba-row" id="gunaProbRow"></div>
+    </div>
+
+    <!-- Use predicted Guna CTA -->
+    <div class="guna-use-predicted" id="useGunaPrompt" style="display:none">
+      <p>Continue to the Prakriti assessment.</p>
+      <br>
+      <button id="usePredictedGunaBtn" onclick="usePredictedGuna()">Use Predicted Guna →</button>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════ PRAKRITI QUIZ ═══════════════════════ -->
+<section class="sect" id="s-quiz">
+
+  <!-- Guna notice banner (shown when Guna was predicted) -->
+  <div id="gunaNotice" style="display:none;text-align:center;background:rgba(201,169,110,.08);border:1px solid rgba(201,169,110,.25);border-radius:12px;padding:12px 20px;margin-bottom:28px;font-size:13px;color:var(--gold);letter-spacing:1px;"></div>
+
+  <form id="qForm" onsubmit="return false">
+
+    <!-- ── SECTION 1: Physical Constitution ── -->
+    <div class="divider"><span>Physical Constitution</span></div>
+
+    <div class="qcard" id="c1"><div class="qhead"><div class="qnum">01</div><div class="qtext">How would you describe your body size / frame?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Body Size" value="Slim" onchange="ans(this)"><div class="dot"></div><span>Slim — naturally lean, hard to gain weight</span></label>
+      <label class="opt"><input type="radio" name="Body Size" value="Medium" onchange="ans(this)"><div class="dot"></div><span>Medium — well-proportioned, moderate build</span></label>
+      <label class="opt"><input type="radio" name="Body Size" value="Large" onchange="ans(this)"><div class="dot"></div><span>Large — broad and sturdy build</span></label>
+    </div></div>
+
+    <div class="qcard" id="c2"><div class="qhead"><div class="qnum">02</div><div class="qtext">How does your body manage weight?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Body Weight" value="Low - difficulties in gaining weight" onchange="ans(this)"><div class="dot"></div><span>Low — struggle to gain weight even when eating well</span></label>
+      <label class="opt"><input type="radio" name="Body Weight" value="Moderate - no difficulties in gaining or losing weight" onchange="ans(this)"><div class="dot"></div><span>Moderate — weight stays fairly balanced</span></label>
+      <label class="opt"><input type="radio" name="Body Weight" value="Heavy - difficulties in losing weight" onchange="ans(this)"><div class="dot"></div><span>Heavy — tend to gain weight, hard to lose</span></label>
+    </div></div>
+
+    <div class="qcard" id="c3"><div class="qhead"><div class="qnum">03</div><div class="qtext">What is your natural height?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Height" value="Short" onchange="ans(this)"><div class="dot"></div><span>Short</span></label>
+      <label class="opt"><input type="radio" name="Height" value="Average" onchange="ans(this)"><div class="dot"></div><span>Average</span></label>
+      <label class="opt"><input type="radio" name="Height" value="Tall" onchange="ans(this)"><div class="dot"></div><span>Tall</span></label>
+    </div></div>
+
+    <div class="qcard" id="c4"><div class="qhead"><div class="qnum">04</div><div class="qtext">How would you describe your bone structure?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Bone Structure" value="Light, Small bones, prominent joints" onchange="ans(this)"><div class="dot"></div><span>Light, small bones with prominent joints</span></label>
+      <label class="opt"><input type="radio" name="Bone Structure" value="Medium bone structure" onchange="ans(this)"><div class="dot"></div><span>Medium, well-proportioned</span></label>
+      <label class="opt"><input type="radio" name="Bone Structure" value="Large, broad shoulders , heavy bone structure" onchange="ans(this)"><div class="dot"></div><span>Large, broad shoulders and heavy build</span></label>
+    </div></div>
+
+    <div class="qcard" id="c5"><div class="qhead"><div class="qnum">05</div><div class="qtext">What best describes your complexion?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Complexion" value="White, pale, tans easily" onchange="ans(this)"><div class="dot"></div><span>White or pale, tans easily</span></label>
+      <label class="opt"><input type="radio" name="Complexion" value="Fair-skin sunburns easily" onchange="ans(this)"><div class="dot"></div><span>Fair skin, sunburns easily</span></label>
+      <label class="opt"><input type="radio" name="Complexion" value="Dark-Complexion, tans easily" onchange="ans(this)"><div class="dot"></div><span>Dark complexion, tans easily, rarely burns</span></label>
+    </div></div>
+
+    <!-- ── SECTION 2: Skin, Hair & Features ── -->
+    <div class="divider"><span>Skin, Hair &amp; Features</span></div>
+
+    <div class="qcard" id="c6"><div class="qhead"><div class="qnum">06</div><div class="qtext">How does your skin generally feel to the touch?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="General feel of skin" value="Dry and thin, cool to touch, rough" onchange="ans(this)"><div class="dot"></div><span>Dry and thin, cool to touch, rough</span></label>
+      <label class="opt"><input type="radio" name="General feel of skin" value="Smooth and warm, oily T-zone" onchange="ans(this)"><div class="dot"></div><span>Smooth and warm, with an oily T-zone</span></label>
+      <label class="opt"><input type="radio" name="General feel of skin" value="Thick and moist/greasy, cold" onchange="ans(this)"><div class="dot"></div><span>Thick and moist/greasy, cold to touch</span></label>
+    </div></div>
+
+    <div class="qcard" id="c7"><div class="qhead"><div class="qnum">07</div><div class="qtext">What is the usual texture / appearance of your skin?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Texture of Skin" value="Dry, pigments and aging" onchange="ans(this)"><div class="dot"></div><span>Dry, with pigments and signs of early aging</span></label>
+      <label class="opt"><input type="radio" name="Texture of Skin" value="Freckles, many moles, redness and rashes" onchange="ans(this)"><div class="dot"></div><span>Prone to freckles, moles, redness or rashes</span></label>
+      <label class="opt"><input type="radio" name="Texture of Skin" value="Oily" onchange="ans(this)"><div class="dot"></div><span>Generally oily and smooth</span></label>
+    </div></div>
+
+    <div class="qcard" id="c8"><div class="qhead"><div class="qnum">08</div><div class="qtext">What is the natural colour of your hair?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Hair Color" value="Black/Brown,dull" onchange="ans(this)"><div class="dot"></div><span>Black or brown (often appearing dull)</span></label>
+      <label class="opt"><input type="radio" name="Hair Color" value="Red, light brown, yellow" onchange="ans(this)"><div class="dot"></div><span>Red, light brown or yellowish</span></label>
+      <label class="opt"><input type="radio" name="Hair Color" value="Brown" onchange="ans(this)"><div class="dot"></div><span>Rich brown, thick and lustrous</span></label>
+    </div></div>
+
+    <div class="qcard" id="c9"><div class="qhead"><div class="qnum">09</div><div class="qtext">How would you describe the appearance and texture of your hair?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Appearance of Hair" value="Dry, black, knotted, brittle" onchange="ans(this)"><div class="dot"></div><span>Dry, knotted and brittle — breaks easily</span></label>
+      <label class="opt"><input type="radio" name="Appearance of Hair" value="Straight, oily" onchange="ans(this)"><div class="dot"></div><span>Straight and somewhat oily</span></label>
+      <label class="opt"><input type="radio" name="Appearance of Hair" value="Thick, curly" onchange="ans(this)"><div class="dot"></div><span>Thick, curly, wavy and lustrous</span></label>
+    </div></div>
+
+    <div class="qcard" id="c10"><div class="qhead"><div class="qnum">10</div><div class="qtext">What is the shape of your face?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Shape of face" value="Long, angular, thin" onchange="ans(this)"><div class="dot"></div><span>Long, angular and thin</span></label>
+      <label class="opt"><input type="radio" name="Shape of face" value="Heart-shaped, pointed chin" onchange="ans(this)"><div class="dot"></div><span>Heart-shaped with a pointed chin</span></label>
+      <label class="opt"><input type="radio" name="Shape of face" value="Large, round, full" onchange="ans(this)"><div class="dot"></div><span>Large, round and full</span></label>
+    </div></div>
+
+    <!-- ── SECTION 3: Eyes & Facial Features ── -->
+    <div class="divider"><span>Eyes &amp; Facial Features</span></div>
+
+    <div class="qcard" id="c11"><div class="qhead"><div class="qnum">11</div><div class="qtext">How would you describe your eyes?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Eyes" value="Small, active, darting, dark eyes" onchange="ans(this)"><div class="dot"></div><span>Small, active and darting dark eyes</span></label>
+      <label class="opt"><input type="radio" name="Eyes" value="Medium-sized, penetrating, light-sensitive eyes" onchange="ans(this)"><div class="dot"></div><span>Medium-sized, penetrating, light-sensitive</span></label>
+      <label class="opt"><input type="radio" name="Eyes" value="Big, round, beautiful, glowing eyes" onchange="ans(this)"><div class="dot"></div><span>Big, round, beautiful and glowing</span></label>
+    </div></div>
+
+    <div class="qcard" id="c12"><div class="qhead"><div class="qnum">12</div><div class="qtext">How would you describe your eyelashes?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Eyelashes" value="Scanty eyelashes" onchange="ans(this)"><div class="dot"></div><span>Scanty and sparse</span></label>
+      <label class="opt"><input type="radio" name="Eyelashes" value="Moderate eyelashes" onchange="ans(this)"><div class="dot"></div><span>Moderate</span></label>
+      <label class="opt"><input type="radio" name="Eyelashes" value="Thick/Fused eyelashes" onchange="ans(this)"><div class="dot"></div><span>Thick, dense or fused</span></label>
+    </div></div>
+
+    <div class="qcard" id="c13"><div class="qhead"><div class="qnum">13</div><div class="qtext">How often do you blink your eyes?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Blinking of Eyes" value="Excessive Blinking" onchange="ans(this)"><div class="dot"></div><span>Excessively — blink more than most people</span></label>
+      <label class="opt"><input type="radio" name="Blinking of Eyes" value="Moderate Blinking" onchange="ans(this)"><div class="dot"></div><span>Moderately — normal blinking rate</span></label>
+      <label class="opt"><input type="radio" name="Blinking of Eyes" value="More or less stable" onchange="ans(this)"><div class="dot"></div><span>Rarely — steady, calm gaze</span></label>
+    </div></div>
+
+    <div class="qcard" id="c14"><div class="qhead"><div class="qnum">14</div><div class="qtext">How do your cheeks appear?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Cheeks" value="Wrinkled, Sunken" onchange="ans(this)"><div class="dot"></div><span>Wrinkled or sunken</span></label>
+      <label class="opt"><input type="radio" name="Cheeks" value="Smooth, Flat" onchange="ans(this)"><div class="dot"></div><span>Smooth and flat</span></label>
+      <label class="opt"><input type="radio" name="Cheeks" value="Rounded, Plump" onchange="ans(this)"><div class="dot"></div><span>Rounded and plump</span></label>
+    </div></div>
+
+    <div class="qcard" id="c15"><div class="qhead"><div class="qnum">15</div><div class="qtext">What does your nose look like?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Nose" value="Crooked, Narrow" onchange="ans(this)"><div class="dot"></div><span>Crooked or narrow</span></label>
+      <label class="opt"><input type="radio" name="Nose" value="Pointed, Average" onchange="ans(this)"><div class="dot"></div><span>Pointed and average-sized</span></label>
+      <label class="opt"><input type="radio" name="Nose" value="Rounded, Large open nostrils" onchange="ans(this)"><div class="dot"></div><span>Rounded with large open nostrils</span></label>
+    </div></div>
+
+    <!-- ── SECTION 4: Teeth, Lips & Nails ── -->
+    <div class="divider"><span>Teeth, Lips &amp; Nails</span></div>
+
+    <div class="qcard" id="c16"><div class="qhead"><div class="qnum">16</div><div class="qtext">How would you describe your teeth and gums?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Teeth and gums" value="Irregular, Protruding teeth, Receding gums" onchange="ans(this)"><div class="dot"></div><span>Irregular or protruding teeth, receding gums</span></label>
+      <label class="opt"><input type="radio" name="Teeth and gums" value="Medium-sized teeth, Reddish gums" onchange="ans(this)"><div class="dot"></div><span>Medium-sized teeth with reddish, soft gums</span></label>
+      <label class="opt"><input type="radio" name="Teeth and gums" value="Big, White, Strong teeth, Healthy gums" onchange="ans(this)"><div class="dot"></div><span>Big, white, strong teeth with healthy gums</span></label>
+    </div></div>
+
+    <div class="qcard" id="c17"><div class="qhead"><div class="qnum">17</div><div class="qtext">What best describes your lips?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Lips" value="Tight, thin, dry lips which chaps easily" onchange="ans(this)"><div class="dot"></div><span>Tight, thin and dry — chap easily</span></label>
+      <label class="opt"><input type="radio" name="Lips" value="Lips are soft, medium-sized" onchange="ans(this)"><div class="dot"></div><span>Soft and medium-sized</span></label>
+      <label class="opt"><input type="radio" name="Lips" value="Lips are large, soft, pink, and full" onchange="ans(this)"><div class="dot"></div><span>Large, soft, pink and full</span></label>
+    </div></div>
+
+    <div class="qcard" id="c18"><div class="qhead"><div class="qnum">18</div><div class="qtext">How are your nails?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Nails" value="Dry, Rough, Brittle, Break" onchange="ans(this)"><div class="dot"></div><span>Dry, rough, brittle — break easily</span></label>
+      <label class="opt"><input type="radio" name="Nails" value="Sharp, Flexible, Pink, Lustrous" onchange="ans(this)"><div class="dot"></div><span>Sharp, flexible, pink and lustrous</span></label>
+      <label class="opt"><input type="radio" name="Nails" value="Thick, Oily, Smooth, Polished" onchange="ans(this)"><div class="dot"></div><span>Thick, oily and smooth with a polished appearance</span></label>
+    </div></div>
+
+    <!-- ── SECTION 5: Diet, Appetite & Digestion ── -->
+    <div class="divider"><span>Diet, Appetite &amp; Digestion</span></div>
+
+    <div class="qcard" id="c19"><div class="qhead"><div class="qnum">19</div><div class="qtext">How would you describe your appetite?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Appetite" value="Irregular, Scanty" onchange="ans(this)"><div class="dot"></div><span>Irregular and scanty — often forget to eat</span></label>
+      <label class="opt"><input type="radio" name="Appetite" value="Strong, Unbearable" onchange="ans(this)"><div class="dot"></div><span>Strong and intense — irritable when hungry</span></label>
+      <label class="opt"><input type="radio" name="Appetite" value="Slow but steady" onchange="ans(this)"><div class="dot"></div><span>Slow but steady — can skip meals comfortably</span></label>
+    </div></div>
+
+    <div class="qcard" id="c20"><div class="qhead"><div class="qnum">20</div><div class="qtext">Which tastes do you naturally crave?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Liking tastes" value="Sweet / Sour / Salty" onchange="ans(this)"><div class="dot"></div><span>Sweet, sour and salty</span></label>
+      <label class="opt"><input type="radio" name="Liking tastes" value="Pungent / Bitter / Astringent" onchange="ans(this)"><div class="dot"></div><span>Pungent, bitter and astringent</span></label>
+      <label class="opt"><input type="radio" name="Liking tastes" value="Sweet / Bitter / Astringent" onchange="ans(this)"><div class="dot"></div><span>Sweet, bitter and astringent</span></label>
+    </div></div>
+
+    <div class="qcard" id="c21"><div class="qhead"><div class="qnum">21</div><div class="qtext">How would you describe your digestion?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Digestion Quality" value="weak" onchange="ans(this)"><div class="dot"></div><span>Weak — frequently experience bloating or gas</span></label>
+      <label class="opt"><input type="radio" name="Digestion Quality" value="moderate" onchange="ans(this)"><div class="dot"></div><span>Moderate — generally okay with occasional issues</span></label>
+      <label class="opt"><input type="radio" name="Digestion Quality" value="strong" onchange="ans(this)"><div class="dot"></div><span>Strong — digest most foods with ease</span></label>
+    </div></div>
+
+    <div class="qcard" id="c22"><div class="qhead"><div class="qnum">22</div><div class="qtext">What are your usual dietary habits?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Dietary Habits" value="vegan" onchange="ans(this)"><div class="dot"></div><span>Vegan — strictly plant-based</span></label>
+      <label class="opt"><input type="radio" name="Dietary Habits" value="vegetarian" onchange="ans(this)"><div class="dot"></div><span>Vegetarian — includes dairy and eggs</span></label>
+      <label class="opt"><input type="radio" name="Dietary Habits" value="omnivorous" onchange="ans(this)"><div class="dot"></div><span>Omnivorous — includes meat and plant foods</span></label>
+    </div></div>
+
+    <!-- ── SECTION 6: Lifestyle & Wellbeing ── -->
+    <div class="divider"><span>Lifestyle &amp; Wellbeing</span></div>
+
+    <div class="qcard" id="c23"><div class="qhead"><div class="qnum">23</div><div class="qtext">How is your metabolism?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Metabolism Type" value="fast" onchange="ans(this)"><div class="dot"></div><span>Fast — burn through food quickly</span></label>
+      <label class="opt"><input type="radio" name="Metabolism Type" value="moderate" onchange="ans(this)"><div class="dot"></div><span>Moderate — balanced metabolic rate</span></label>
+      <label class="opt"><input type="radio" name="Metabolism Type" value="slow" onchange="ans(this)"><div class="dot"></div><span>Slow — low metabolic rate, gain weight easily</span></label>
+    </div></div>
+
+    <div class="qcard" id="c24"><div class="qhead"><div class="qnum">24</div><div class="qtext">What climate do you feel most comfortable in?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Climate Preference" value="warm" onchange="ans(this)"><div class="dot"></div><span>Warm — dislike cold, prefer warm weather</span></label>
+      <label class="opt"><input type="radio" name="Climate Preference" value="moderate" onchange="ans(this)"><div class="dot"></div><span>Moderate — comfortable in temperate conditions</span></label>
+      <label class="opt"><input type="radio" name="Climate Preference" value="cool" onchange="ans(this)"><div class="dot"></div><span>Cool — prefer cooler, breezy weather</span></label>
+    </div></div>
+
+    <div class="qcard" id="c25"><div class="qhead"><div class="qnum">25</div><div class="qtext">How do you typically handle stress?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Stress Levels" value="high" onchange="ans(this)"><div class="dot"></div><span>High — get stressed or anxious easily and frequently</span></label>
+      <label class="opt"><input type="radio" name="Stress Levels" value="moderate" onchange="ans(this)"><div class="dot"></div><span>Moderate — feel stressed occasionally but manage it</span></label>
+      <label class="opt"><input type="radio" name="Stress Levels" value="low" onchange="ans(this)"><div class="dot"></div><span>Low — rarely stressed, stay calm under pressure</span></label>
+    </div></div>
+
+    <div class="qcard" id="c26"><div class="qhead"><div class="qnum">26</div><div class="qtext">How would you describe your sleep patterns?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Sleep Patterns" value="short" onchange="ans(this)"><div class="dot"></div><span>Short — sleep less than 6 hrs, wake up easily</span></label>
+      <label class="opt"><input type="radio" name="Sleep Patterns" value="moderate" onchange="ans(this)"><div class="dot"></div><span>Moderate — 6–8 hrs, fairly restful</span></label>
+      <label class="opt"><input type="radio" name="Sleep Patterns" value="long" onchange="ans(this)"><div class="dot"></div><span>Long — 8+ hrs, hard to wake up</span></label>
+    </div></div>
+
+    <div class="qcard" id="c27"><div class="qhead"><div class="qnum">27</div><div class="qtext">What is your physical activity level?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Physical Activity Level" value="high" onchange="ans(this)"><div class="dot"></div><span>High — exercise regularly and am very active</span></label>
+      <label class="opt"><input type="radio" name="Physical Activity Level" value="moderate" onchange="ans(this)"><div class="dot"></div><span>Moderate — moderately active most days</span></label>
+      <label class="opt"><input type="radio" name="Physical Activity Level" value="sedentary" onchange="ans(this)"><div class="dot"></div><span>Sedentary — spend most time sitting</span></label>
+    </div></div>
+
+    <div class="qcard" id="c28"><div class="qhead"><div class="qnum">28</div><div class="qtext">How much water do you drink daily?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Water Intake" value="low" onchange="ans(this)"><div class="dot"></div><span>Low — less than 4–5 glasses a day</span></label>
+      <label class="opt"><input type="radio" name="Water Intake" value="moderate" onchange="ans(this)"><div class="dot"></div><span>Moderate — around 6–8 glasses</span></label>
+      <label class="opt"><input type="radio" name="Water Intake" value="high" onchange="ans(this)"><div class="dot"></div><span>High — 8 or more glasses a day</span></label>
+    </div></div>
+
+    <div class="qcard" id="c29"><div class="qhead"><div class="qnum">29</div><div class="qtext">How sensitive is your skin to products, sun or environment?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="Skin Sensitivity" value="sensitive" onchange="ans(this)"><div class="dot"></div><span>Very sensitive — reacts easily</span></label>
+      <label class="opt"><input type="radio" name="Skin Sensitivity" value="normal" onchange="ans(this)"><div class="dot"></div><span>Normal — average sensitivity</span></label>
+      <label class="opt"><input type="radio" name="Skin Sensitivity" value="insensitive" onchange="ans(this)"><div class="dot"></div><span>Insensitive — rarely reacts, robust skin</span></label>
+    </div></div>
+
+    <div class="qcard" id="c30"><div class="qhead"><div class="qnum">30</div><div class="qtext">Which statement best describes your mind and thinking style?</div></div>
+    <div class="opts">
+      <label class="opt"><input type="radio" name="_mindset" value="vata_mind" onchange="ans(this)"><div class="dot"></div><span>Creative, quick-thinking, enthusiastic but easily distracted</span></label>
+      <label class="opt"><input type="radio" name="_mindset" value="pitta_mind" onchange="ans(this)"><div class="dot"></div><span>Sharp, focused, goal-oriented and sometimes perfectionist</span></label>
+      <label class="opt"><input type="radio" name="_mindset" value="kapha_mind" onchange="ans(this)"><div class="dot"></div><span>Calm, steady, patient, loyal and resistant to change</span></label>
+    </div></div>
+
+    <!-- ── TRIGUNA MANUAL SELECTION ── -->
+    <div class="divider"><span>Triguna — Your Mental Nature</span></div>
+    <div class="qcard" id="c-guna">
+      <div class="qhead">
+        <div class="qnum">✦</div>
+        <div class="qtext">Which Guna best reflects your current mental state and dominant approach to life?</div>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.65">
+        Already predicted your Guna above? It has been pre-selected. You can change it here if you wish.
+      </p>
+      <div class="guna-grid">
+        <label class="guna-card" id="gc-sattva" onclick="pickGuna('Sattva',this)">
+          <input type="radio" name="guna" value="Sattva">
+          <div class="guna-badge">✓</div>
+          <div class="guna-icon">🌟</div>
+          <div class="guna-name">Sattva</div>
+          <div class="guna-sub">Purity, clarity, wisdom and balance. Calm, knowledge-seeking, ethical and purpose-driven.</div>
+        </label>
+        <label class="guna-card" id="gc-rajas" onclick="pickGuna('Rajas',this)">
+          <input type="radio" name="guna" value="Rajas">
+          <div class="guna-badge">✓</div>
+          <div class="guna-icon">🔥</div>
+          <div class="guna-name">Rajas</div>
+          <div class="guna-sub">Action, passion and ambition. Energetic, competitive, results-driven and goal-focused.</div>
+        </label>
+        <label class="guna-card" id="gc-tamas" onclick="pickGuna('Tamas',this)">
+          <input type="radio" name="guna" value="Tamas">
+          <div class="guna-badge">✓</div>
+          <div class="guna-icon">🌑</div>
+          <div class="guna-name">Tamas</div>
+          <div class="guna-sub">Stability, grounding and structure. Prefer routine, security and familiar predictable environments.</div>
+        </label>
+      </div>
+    </div>
+
+    <div class="sub-wrap">
+      <button class="sub-btn" id="subBtn" onclick="submitQuiz()">Reveal My Prakriti &amp; Career Path ✦</button>
+      <p class="sub-note" id="subNote">Answer all 30 questions and select your Guna to unlock your result</p>
+    </div>
+  </form>
+</section>
+
+<!-- ═══════════════════════ LOADING ═══════════════════════ -->
+<section class="sect" id="load-sect">
+  <div class="spin"></div>
+  <div class="load-t">Consulting the Doshas…</div>
+  <div class="load-s">Analysing your Prakriti &amp; matching careers from the database</div>
+</section>
+
+<!-- ═══════════════════════ RESULT ═══════════════════════ -->
+<section class="sect" id="s-result">
+
+  <div class="res-hero">
+    <div class="res-greet" id="resGreet"></div>
+    <div class="res-label">Your Prakriti (Dosha Constitution) is</div>
+    <div class="res-dosha" id="resDosha">—</div>
+    <div class="res-guna-badge" id="resGunaBadge"></div>
+    <p class="res-desc" id="resDesc"></p>
+    <div class="res-meta" id="resMeta"></div>
+  </div>
+
+  <!-- Guna breakdown on result page -->
+  <div class="guna-final-section" id="gunaFinalSection"></div>
+
+  <!-- Dosha probability cards -->
+  <div class="sec-title">Constitution Breakdown</div>
+  <div class="sec-sub">How your physical and mental traits map across the three Doshas</div>
+  <div class="dosha-grid" id="doshaGrid"></div>
+
+  <!-- Career recommendations -->
+  <div class="sec-title">Your Career Recommendations</div>
+  <div class="sec-sub" id="careerSubtitle"></div>
+  <div class="career-cards" id="careerCards"></div>
+
+  <!-- Traits -->
+  <div class="sec-title">Key Traits of Your Constitution</div>
+  <div class="sec-sub">Natural strengths that define how you work and interact with the world</div>
+  <div class="traits-grid" id="traitsGrid"></div>
+
+  <div class="retake-wrap">
+    <button class="retake-btn" onclick="location.reload()">↺ Retake Assessment</button>
+  </div>
+
+</section>
+
+</div><!-- /wrapper -->
+
+<script src="app.js"></script>
+</body>
+</html>

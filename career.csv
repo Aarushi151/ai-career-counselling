@@ -1,0 +1,84 @@
+dosha,guna,career,description
+Vata,Sattva,Creative Director,Leads creative vision in media branding advertising and storytelling with innovative thinking
+Vata,Sattva,Writer/Author,Expresses deep ideas through writing storytelling and philosophical content creation
+Vata,Sattva,UX Researcher,Studies user behavior to design meaningful and intuitive digital experiences
+
+Vata,Rajas,Digital Marketer,Handles fast paced campaigns SEO social media and performance marketing strategies
+Vata,Rajas,Content Creator,Produces engaging videos blogs and social content with trend awareness
+Vata,Rajas,Advertising Specialist,Designs high impact campaigns to influence consumer behavior
+
+Vata,Tamas,Freelancer,Works independently in flexible roles but may lack consistency and discipline
+Vata,Tamas,Data Entry Operator,Performs repetitive digital tasks with low creativity and structure
+Vata,Tamas,Junior Assistant,Supports tasks without much initiative or strategic involvement
+
+Pitta,Sattva,Doctor,Uses knowledge discipline and leadership to heal patients and serve society
+Pitta,Sattva,Scientist,Conducts research and innovation in fields like physics chemistry or biology
+Pitta,Sattva,Judge,Applies logic fairness and strong ethics in legal decision making
+
+Pitta,Rajas,Entrepreneur,Builds startups takes risks and leads teams with ambition and competitive mindset
+Pitta,Rajas,Investment Banker,Handles finance deals high pressure markets and strategic investments
+Pitta,Rajas,Corporate Lawyer,Works in legal advisory contracts and business law with strong analytical skills
+
+Pitta,Tamas,Manager,Controls team operations but may focus more on authority than innovation
+Pitta,Tamas,Police Officer,Maintains order and discipline with authority driven approach
+Pitta,Tamas,Military Officer,Executes structured tasks with control but limited flexibility
+
+Kapha,Sattva,Teacher,Guides students patiently with calm supportive and nurturing nature
+Kapha,Sattva,Psychologist,Understands human emotions deeply and helps others mentally and emotionally
+Kapha,Sattva,Social Worker,Works for community welfare helping people with compassion and stability
+
+Kapha,Rajas,HR Manager,Manages hiring employee relations and organizational culture
+Kapha,Rajas,Operations Manager,Handles processes logistics and team coordination in organizations
+Kapha,Rajas,Administrator,Maintains systems policies and workflow efficiency in institutions
+
+Kapha,Tamas,Clerk,Performs routine administrative work with stability and minimal change
+Kapha,Tamas,Receptionist,Handles front desk tasks with repetitive interactions
+Kapha,Tamas,Store Keeper,Manages inventory with routine and predictable workflow
+
+Vata-Pitta,Sattva,Product Manager,Combines creativity and strategy to manage tech products and teams
+Vata-Pitta,Sattva,Startup Strategist,Designs innovative business models with execution focus
+Vata-Pitta,Sattva,AI Researcher,Builds intelligent systems combining creativity and analytical thinking
+
+Vata-Pitta,Rajas,Startup Founder,Highly driven innovator building scalable ventures in dynamic environments
+Vata-Pitta,Rajas,Growth Hacker,Focuses on rapid business growth using creative marketing strategies
+Vata-Pitta,Rajas,Tech Consultant,Advises companies on technology solutions and scaling strategies
+
+Vata-Pitta,Tamas,Sales Executive,Works in sales with energy but lacks long term consistency
+Vata-Pitta,Tamas,Field Agent,Handles on ground work without structured planning
+Vata-Pitta,Tamas,Support Executive,Provides assistance but limited strategic thinking
+
+Pitta-Kapha,Sattva,Civil Servant,Balances leadership discipline and service mindset in governance roles
+Pitta-Kapha,Sattva,Professor,Combines knowledge authority and stability in teaching higher education
+Pitta-Kapha,Sattva,Doctor (Specialist),Provides expert medical care with deep focus and responsibility
+
+Pitta-Kapha,Rajas,Operations Head,Leads execution heavy processes with authority and consistency
+Pitta-Kapha,Rajas,Project Manager,Manages deadlines teams and resources efficiently
+Pitta-Kapha,Rajas,Business Analyst,Analyzes systems and improves processes in organizations
+
+Pitta-Kapha,Tamas,Supervisor,Oversees work but avoids innovation or risk taking
+Pitta-Kapha,Tamas,Security Officer,Maintains safety systems with routine monitoring
+Pitta-Kapha,Tamas,Factory Manager,Handles operations with rigid structure
+
+Vata-Kapha,Sattva,Psychologist,Combines empathy and creativity to understand human behavior deeply
+Vata-Kapha,Sattva,Writer,Creates thoughtful and emotional content with depth and imagination
+Vata-Kapha,Sattva,Research Analyst,Studies patterns and insights with patience and creativity
+
+Vata-Kapha,Rajas,Content Strategist,Plans content marketing with creative and structured approach
+Vata-Kapha,Rajas,Digital Planner,Designs campaigns and workflows for online platforms
+Vata-Kapha,Rajas,Media Manager,Handles brand presence and communication strategies
+
+Vata-Kapha,Tamas,Support Staff,Provides assistance without proactive growth mindset
+Vata-Kapha,Tamas,Clerical Assistant,Handles basic office tasks with low initiative
+Vata-Kapha,Tamas,Back Office Worker,Performs routine backend operations
+
+Vata-Pitta-Kapha,Sattva,Research Scientist,Balanced personality suited for deep research innovation and long term projects
+Vata-Pitta-Kapha,Sattva,Policy Maker,Designs systems and policies with holistic thinking
+Vata-Pitta-Kapha,Sattva,Consultant,Advises across domains using balanced analytical and creative skills
+
+Vata-Pitta-Kapha,Rajas,Business Consultant,Helps companies grow with adaptable strategies and execution
+Vata-Pitta-Kapha,Rajas,Management Consultant,Works across industries solving business problems
+Vata-Pitta-Kapha,Rajas,Entrepreneur,Handles multiple roles with dynamic and adaptable mindset
+
+Vata-Pitta-Kapha,Tamas,General Worker,Can perform multiple tasks but lacks direction and specialization
+Vata-Pitta-Kapha,Tamas,Assistant,Supports operations without leadership or innovation
+Vata-Pitta-Kapha,Tamas,Operator,Handles machines or systems with repetitive tasks

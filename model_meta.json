@@ -1,0 +1,188 @@
+{
+  "feature_cols": [
+    "Body Size",
+    "Body Weight",
+    "Height",
+    "Bone Structure",
+    "Complexion",
+    "General feel of skin",
+    "Texture of Skin",
+    "Hair Color",
+    "Appearance of Hair",
+    "Shape of face",
+    "Eyes",
+    "Eyelashes",
+    "Blinking of Eyes",
+    "Cheeks",
+    "Nose",
+    "Teeth and gums",
+    "Lips",
+    "Nails",
+    "Appetite",
+    "Liking tastes",
+    "Metabolism Type",
+    "Climate Preference",
+    "Stress Levels",
+    "Sleep Patterns",
+    "Dietary Habits",
+    "Physical Activity Level",
+    "Water Intake",
+    "Digestion Quality",
+    "Skin Sensitivity"
+  ],
+  "dosha_classes": [
+    "Kapha",
+    "Pitta",
+    "Vata",
+    "pitta+kapha",
+    "vata+kapha",
+    "vata+pitta"
+  ],
+  "column_options": {
+    "Body Size": [
+      "Large",
+      "Medium",
+      "Slim"
+    ],
+    "Body Weight": [
+      "Heavy - difficulties in losing weight",
+      "Low - difficulties in gaining weight",
+      "Moderate - no difficulties in gaining or losing weight"
+    ],
+    "Height": [
+      "Average",
+      "Short",
+      "Tall"
+    ],
+    "Bone Structure": [
+      "Large, broad shoulders , heavy bone structure",
+      "Light, Small bones, prominent joints",
+      "Medium bone structure"
+    ],
+    "Complexion": [
+      "Dark-Complexion, tans easily",
+      "Fair-skin sunburns easily",
+      "White, pale, tans easily"
+    ],
+    "General feel of skin": [
+      "Dry and thin, cool to touch, rough",
+      "Smooth and warm, oily T-zone",
+      "Thick and moist/greasy, cold"
+    ],
+    "Texture of Skin": [
+      "Dry, pigments and aging",
+      "Freckles, many moles, redness and rashes",
+      "Oily"
+    ],
+    "Hair Color": [
+      "Black/Brown,dull",
+      "Brown",
+      "Red, light brown, yellow"
+    ],
+    "Appearance of Hair": [
+      "Dry, black, knotted, brittle",
+      "Straight, oily",
+      "Thick, curly"
+    ],
+    "Shape of face": [
+      "Heart-shaped, pointed chin",
+      "Large, round, full",
+      "Long, angular, thin"
+    ],
+    "Eyes": [
+      "Big, round, beautiful, glowing eyes",
+      "Medium-sized, penetrating, light-sensitive eyes",
+      "Small, active, darting, dark eyes"
+    ],
+    "Eyelashes": [
+      "Moderate eyelashes",
+      "Scanty eyelashes",
+      "Thick/Fused eyelashes"
+    ],
+    "Blinking of Eyes": [
+      "Excessive Blinking",
+      "Moderate Blinking",
+      "More or less stable"
+    ],
+    "Cheeks": [
+      "Rounded, Plump",
+      "Smooth, Flat",
+      "Wrinkled, Sunken"
+    ],
+    "Nose": [
+      "Crooked, Narrow",
+      "Pointed, Average",
+      "Rounded, Large open nostrils"
+    ],
+    "Teeth and gums": [
+      "Big, White, Strong teeth, Healthy gums",
+      "Irregular, Protruding teeth, Receding gums",
+      "Medium-sized teeth, Reddish gums"
+    ],
+    "Lips": [
+      "Lips are large, soft, pink, and full",
+      "Lips are soft, medium-sized",
+      "Tight, thin, dry lips which chaps easily"
+    ],
+    "Nails": [
+      "Dry, Rough, Brittle, Break",
+      "Sharp, Flexible, Pink, Lustrous",
+      "Thick, Oily, Smooth, Polished"
+    ],
+    "Appetite": [
+      "Irregular, Scanty",
+      "Slow but steady",
+      "Strong, Unbearable"
+    ],
+    "Liking tastes": [
+      "Pungent / Bitter / Astringent",
+      "Sweet / Bitter / Astringent",
+      "Sweet / Sour / Salty"
+    ],
+    "Metabolism Type": [
+      "fast",
+      "moderate",
+      "slow"
+    ],
+    "Climate Preference": [
+      "cool",
+      "moderate",
+      "warm"
+    ],
+    "Stress Levels": [
+      "high",
+      "low",
+      "moderate"
+    ],
+    "Sleep Patterns": [
+      "long",
+      "moderate",
+      "short"
+    ],
+    "Dietary Habits": [
+      "omnivorous",
+      "vegan",
+      "vegetarian"
+    ],
+    "Physical Activity Level": [
+      "high",
+      "moderate",
+      "sedentary"
+    ],
+    "Water Intake": [
+      "high",
+      "low",
+      "moderate"
+    ],
+    "Digestion Quality": [
+      "moderate",
+      "strong",
+      "weak"
+    ],
+    "Skin Sensitivity": [
+      "insensitive",
+      "normal",
+      "sensitive"
+    ]
+  }
+}
